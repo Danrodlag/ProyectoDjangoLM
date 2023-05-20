@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Concesionario</title>
-    </head>
-    <body>
-        <h1>Lista de coches</h1>
+{% extends 'plantilla.html' %}
+{% block content %}
+    <div>
+        <h1>Lista de Coches: </h1>
         <ul>
-            <li>
-              <a href="#">Berlina</a> (Fab.:Toyota, Cc: 1600.0)
-            </li>
-            <li>
-              <a href="#">Sport</a> (Fab.: Mercedes, Cc: 2500.0)
-            </li>
+            {% for coche in lista_coches %}
+            <li><span>
+                <a href="{% url 'verCoche' coche.id %}">{{ coche.modelo }}</a>(Fab.: {{ coche.fabricante }}, Cc: {{ coche.cencubicos }})
+            </span></li>
+            {% endfor %}
         </ul>
-        <h3>Acciones:</h3>
-        <a href="">Insertar nuevo coche</a>
-    </body>
-</html>
+    </div>
+    <h1>Acciones:</h1>
+    <a href="{% url 'nuevo' %}">Insertar nuevo coche</a>
+{% endblock %}

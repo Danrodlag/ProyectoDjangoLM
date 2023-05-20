@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Concesionario</title>
-    </head>
-    <body>
-        <h1>Borrar coche con id ...</h1>
-        <p>¿Seguro que quiere eliminar el coche modelo ...?</p>
-        <button>Sí, borralo</button>
-    </body>
-</html>
+{% extends 'plantilla.html' %}
+{% block content %}
+        <h1>Borrar coche con id {{ coche.id }}</h1>
+        <p>¿Seguro que quiere eliminar el coche modelo {{coche.modelo}}?</p>
+        <form method="POST" action="{% url 'eliminar' coche.id %}">
+        {% csrf_token %}
+            <button type="submit">Si, bórralo </button>
+        </form>
+{% endblock %}

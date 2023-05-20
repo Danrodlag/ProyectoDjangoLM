@@ -1,23 +1,25 @@
 {% extends "plantilla.html" %}
 {% block content %}
-    <form action="/team_name_url/" method="post">
-    <label for="team_name">Enter name: </label>
-    <input id="team_name" type="text" name="name_field" value="Default name for team.">
-    <input type="submit" value="OK">
-    </form>
-    <h1>Insertar nuevo coche ...</h1>
-    <p><strong>Fabricante:</strong></p>
-    <input type="text" id="fabricante-input">
-    <p><strong>Potencia:</strong></p>
-    <input type="number" step="0.1" min="0" id="potencia-input">
-    <p><strong>Centímetros cúbicos:</strong></p>
-    <input type="number" step="0.1" min="0" id="cc-input">
-    <p><strong>Color:</strong></p>
-    <input type="text" id="color-input">
-    <p><strong>Máximo de pasajeros:</strong></p>
-    <input type="number" step="1" min="0" id="pasajeros-input">
-    <p><strong>Peso:</strong></p>
-    <input type="number" step="0.1" min="0" id="peso-input">
-    <br>
-    <button>Insertar nuevo coche</button>
+    <form method="POST" action="{% url 'nuevo' %}">
+        {% csrf_token %}
+        <h1>Insertar nuevo coche...</h1>
+        <label for="fabricante-input"><strong>Fabricante:</strong></label>
+        <input type="text" id="fabricante-input" name="fabricante">
+        <label for="modelo-input"><strong>Modelo:</strong></label>
+        <input type="text" id="modelo-input" name="modelo">
+        <label for="caballos-input"><strong>Potencia:</strong></label>
+        <input type="number" step="0.1" min="0" id="caballos-input" name="caballos">
+        <label for="cencubicos-input"><strong>Centímetros cúbicos:</strong></label>
+        <input type="number" step="0.1" min="0" id="cencubicos-input" name="cencubicos">
+        <label for="color-input"><strong>Color:</strong></label>
+        <input type="text" id="color-input" name="color">
+        <label for="npasajeros-input"><strong>Máximo de pasajeros:</strong></label>
+        <input type="number" step="1" min="0" id="npasajeros-input" name="npasajeros">
+        <label for="peso-input"><strong>Peso:</strong></label>
+        <input type="number" step="0.1" min="0" id="peso-input" name="peso">
+        <label for="idcomercial-input"><strong>Número comercial:</strong></label>
+        <input type="number" step="1" min="0" id="idcomercial-input" name="idcomercial">
+        <br>
+        <button type="submit">Insertar nuevo coche</button>
+</form>
 {% endblock %}
