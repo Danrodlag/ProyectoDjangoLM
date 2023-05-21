@@ -1,9 +1,11 @@
 {% extends "plantilla.html" %}
 {% block content %}
-        <h1>Principal Concesionario</h1>
-        <p>¡Bienvenidos al Concesionario!</p>
-        <p>Número de coches disponibles en la tabla: {{ num_coches }}</p>
-        <h3>Acciones:</h3>
-        <a href="{% url 'verTodos' %}">Ver lista de coches</a>    <a href="{% url 'nuevo' %}">Insertar nuevo coche</a>
+
+    <h1>Principal Concesionario</h1>
+    <p>¡Bienvenidos al Concesionario!</p>
+    <p>Número de coches disponibles en la tabla: {{ num_coches }}</p>
+    <h3>Acciones:</h3>
+    <a href="{% url 'nuevo' %}">Insertar nuevo coche</a>
+    <a href="{% url 'nuevoCom' %}">Insertar nuevo comercial</a>
 
 {% endblock %}

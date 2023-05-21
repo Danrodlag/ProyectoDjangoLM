@@ -6,7 +6,19 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'verTodos' %}">Lista vehículos</a> </li>
+            <li><a href="{% url 'ver_comerciales' %}">Lista comerciales</a> </li>
+        </ul>
+    </nav>
+
     {% block content%}
     {% endblock %}
+
+    <footer>
+        <p>Empresa internacional Copyright 2023 </p>
+    </footer>
 </body>
 </html>

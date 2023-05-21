@@ -4,6 +4,6 @@
         <p>¿Seguro que quiere eliminar el coche modelo {{coche.modelo}}?</p>
         <form method="POST" action="{% url 'eliminar' coche.id %}">
         {% csrf_token %}
-            <button type="submit">Si, bórralo </button>
+            <button type="submit">Si, bórralo</button>
         </form>
 {% endblock %}

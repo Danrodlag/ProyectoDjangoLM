@@ -1,0 +1,15 @@
+{% extends 'plantilla.html' %}
+{% block content %}
+    <div>
+        <h1>Lista de Comerciales: </h1>
+        <ul>
+            {% for comercial in lista_comerciales %}
+            <li><span>
+                <a href="{% url 'ver_comercial' comercial.id %}">{{ comercial.nombre }}</a> {{ comercial.apellido1 }}, Cc: {{ coche.cencubicos }})
+            </span></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <h1>Acciones:</h1>
+    <a href="{% url 'nuevoCom' %}">Insertar nuevo comercial</a>
+{% endblock %}

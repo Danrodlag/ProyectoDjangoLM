@@ -1,0 +1,9 @@
+{% extends 'plantilla.html' %}
+{% block content %}
+        <h1>Borrar comercial con id {{ com.id }}</h1>
+        <p>¿Seguro que quiere eliminar el comercial de nombre {{ com.nombre }}?</p>
+        <form method="POST" action="{% url 'eliminar_com' com.id %}">
+        {% csrf_token %}
+            <button type="submit">Si, bórralo</button>
+        </form>
+{% endblock %}

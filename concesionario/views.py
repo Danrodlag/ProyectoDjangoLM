@@ -1,6 +1,9 @@
+
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Comerciales, Vehiculos
-from .forms import VehiculoForm
+from .forms import VehiculoForm, ComForm
+
+
 # Create your views here.
 
 
@@ -40,7 +43,7 @@ def actualizar(request, id):
         if form.is_valid():
 
             form.save()
-            return redirect('verCoche', id=id)  # Redirigir al detalle del coche modificado
+            return redirect('index')  # Redirigir al detalle del coche modificado
     else:
         form = VehiculoForm(instance=coche)
 
@@ -55,3 +58,52 @@ def eliminar(request, id):
         return redirect('verTodos')  # Redirigir a la lista de coches o a donde desees
 
     return render(request, 'Elimina.html', {'coche': coche})
+
+
+def nue_com(request):
+    if request.method == 'POST':
+        form = ComForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')  # Redirigir a la página de lista de coches
+    else:
+        form = ComForm()
+
+    return render(request, 'insCom.html', {'form': form})
+
+
+def mod_com(request, id):
+    comercial = get_object_or_404(Comerciales, id=id)
+
+    if request.method == 'POST':
+
+        form = ComForm(request.POST, instance=comercial)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = ComForm(instance=comercial)
+
+    return render(request, 'modCom.html', {'form': form, 'comercial': comercial})
+
+
+def ver_comerciales(request):
+    lista_comerciales = Comerciales.objects.all()
+    # cant = Vehiculos.objects.annotate(num_coch=Count('idcomercial'))
+    return render(request, 'ver_comerciales.html', context={'lista_comerciales': lista_comerciales})
+
+
+def ver_comercial(request, id):
+
+    com = get_object_or_404(Comerciales, id=id)
+    return render(request, 'comercial.html', {'com': com})
+
+
+def eliminar_com(request, id):
+    com = get_object_or_404(Comerciales, id=id)
+
+    if request.method == 'POST':
+        com.delete()
+        return redirect('ver_comerciales')
+
+    return render(request, 'elim_com.html', {'com': com})

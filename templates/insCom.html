@@ -1,0 +1,19 @@
+{% extends "plantilla.html" %}
+{% block content %}
+    <form method="POST" action="{% url 'nuevoCom' %}">
+        {% csrf_token %}
+        <h1>Insertar nuevo Comercial</h1>
+        <label for="nombre-input"><strong>Nombre:</strong></label>
+        <input type="text" id="nombre-input" name="nombre">
+        <label for="apellido1-input"><strong>Primer Apellido:</strong></label>
+        <input type="text" id="apellido1-input" name="apellido1">
+        <label for="apellido2-input"><strong>Segundo Apellido:</strong></label>
+        <input type="text" id="apellido2-input" name="apellido2">
+        <label for="fecha_incorporacion-input"><strong>Fecha incorporación:</strong></label>
+        <input type="date" id="fecha_incorporacion-input" name="fecha_incorporacion">
+        <label for="comision-input"><strong>Comisión:</strong></label>
+        <input type="number" step="0.1" min="0" id="comision-input" name="comision">
+        <br>
+        <button type="submit">Insertar nuevo comercial</button>
+</form>
+{% endblock %}

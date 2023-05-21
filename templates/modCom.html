@@ -1,0 +1,10 @@
+{% extends "plantilla.html" %}
+{% block content %}
+    <form method="POST" action="{% url 'modCom' comercial.id %}">
+    {% csrf_token %}
+    <h1>Actualizar comercial: {{ comercial.nombre }}</h1>
+    {{ form.as_p }}
+    <br>
+    <button type="submit">Actualizar comercial</button>
+    </form>
+{% endblock %}
